@@ -560,9 +560,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carModel: {fileID: 22045621}
-  _maxSpeed: 35
+  _maxSpeed: 20
   _accelFactor: 2
-  _speedFactor: 15
+  _speedFactor: 5
+  _turnFactor: 10
 --- !u!1001 &6782375183199664175
 PrefabInstance:
   m_ObjectHideFlags: 0

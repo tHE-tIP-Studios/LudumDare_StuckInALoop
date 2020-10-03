@@ -6,6 +6,7 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _accelFactor;
     [SerializeField] private float _speedFactor;
+    [SerializeField] private float _turnFactor;
     private Rigidbody _rb;
     private Vector3 _moveVector;
     private float _acceleration;
@@ -32,6 +33,7 @@ public class CarMovement : MonoBehaviour
     {
         VroomVroom();
         Skrrrrt();
+        print($"RBVelocity: {_rb.velocity}");
     }
 
 
@@ -50,7 +52,7 @@ public class CarMovement : MonoBehaviour
             _velocity -= _speedFactor * 0.65f * Time.deltaTime;
         }
 
-        _moveVector = new Vector3(0.0f, _rb.velocity.y * 1.03f, _velocity);
+        _moveVector = new Vector3(0.0f, _rb.velocity.y * 1.03f, _velocity * transform.forward.z);
         _rb.velocity = _moveVector;
     }
 
@@ -61,33 +63,52 @@ public class CarMovement : MonoBehaviour
     {
         if (_rb.velocity.z >= 0.1f)
         {
-            _angAccel = Input.GetAxisRaw("Horizontal") * _accelFactor;
+            // _angAccel = Input.GetAxisRaw("Horizontal") * _accelFactor;
 
-            _turnVelocity += ((_speedFactor * 2f) * _angAccel * Time.deltaTime);
-            _turnVelocity = Mathf.Clamp(_turnVelocity, -_maxSpeed, _maxSpeed);
+            // _turnVelocity += ((_speedFactor * 2f) * _angAccel * Time.deltaTime);
+            // _turnVelocity = Mathf.Clamp(_turnVelocity, -_maxSpeed, _maxSpeed);
 
-            if (_angAccel <= 0.05f)
+            // if (_angAccel <= 0.05f)
+            // {
+            //     if (_turnVelocity >= 0.05f)
+            //     {
+            //         _turnVelocity -= _speedFactor * 0.5f * Time.deltaTime;
+            //     }
+            //     else if (_turnVelocity <= -0.05f)
+            //     {
+            //         _turnVelocity += _speedFactor * 0.5f * Time.deltaTime;
+            //     }
+            // }
+
+            // _carModel.transform.localEulerAngles = Quaternion.Slerp(
+            //     Quaternion.Euler(_carModel.transform.localEulerAngles),
+            //     Quaternion.Euler(new Vector3(0.0f, Mathf.Atan2(
+            //         _turnVelocity, _moveVector.z) * 180 / Mathf.PI, 0.0f)),
+            //     _speedFactor * Time.deltaTime).eulerAngles;
+
+            // _moveVector.x = _turnVelocity;
+
+            // _rb.velocity = _moveVector;
+
+            _angAccel = Input.GetAxisRaw("Horizontal");
+
+            if (_angAccel < 0)
             {
-                if (_turnVelocity >= 0.05f)
-                {
-                    _turnVelocity -= _speedFactor * 0.5f * Time.deltaTime;
-                }
-                else if (_turnVelocity <= -0.05f)
-                {
-                    _turnVelocity += _speedFactor * 0.5f * Time.deltaTime;
-                }
+                _carModel.transform.localEulerAngles = Quaternion.Slerp(
+                    Quaternion.Euler(_carModel.transform.localEulerAngles),
+                    Quaternion.Euler(new Vector3(0.0f, -45f, 0.0f)),
+                    _turnFactor * 0.5f * Time.deltaTime).eulerAngles;
+            }
+            else if (_angAccel > 0)
+            {
+                _carModel.transform.localEulerAngles = Quaternion.Slerp(
+                    Quaternion.Euler(_carModel.transform.localEulerAngles),
+                    Quaternion.Euler(new Vector3(0.0f, 45f, 0.0f)),
+                    _turnFactor * 0.5f * Time.deltaTime).eulerAngles;
             }
 
-
-            _moveVector.x = _turnVelocity;
-
-            _carModel.transform.localEulerAngles = Quaternion.Slerp(
-                Quaternion.Euler(_carModel.transform.localEulerAngles),
-                Quaternion.Euler(new Vector3(0.0f, Mathf.Atan2(
-                    _turnVelocity, _moveVector.z) * 180 / Mathf.PI, 0.0f)),
-                _speedFactor * Time.deltaTime).eulerAngles;
-
-            _rb.velocity = _moveVector;
+            transform.Translate(new Vector3(
+                _angAccel, 0.0f, 0.0f) * _turnFactor * Time.deltaTime);
         }
     }
 }
