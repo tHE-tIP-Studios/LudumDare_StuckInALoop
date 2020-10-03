@@ -52,8 +52,10 @@ public class CarMovement : MonoBehaviour
             _velocity -= _speedFactor * 0.65f * Time.deltaTime;
         }
 
-        _moveVector = new Vector3(0.0f, _rb.velocity.y * 1.03f, _velocity);
-        _moveVector += (Vector3.forward * - StripMovement.StripSpeed);
+        // _moveVector = new Vector3(0.0f, _rb.velocity.y * 1.03f, _velocity);
+        _moveVector = transform.forward * _velocity;
+        _moveVector.y = _rb.velocity.y * 1.03f;
+        _moveVector += (Vector3.forward * -StripMovement.StripSpeed);
         _rb.velocity = _moveVector;
     }
 
@@ -62,54 +64,43 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Skrrrrt()
     {
-        if (_rb.velocity.z >= 0.1f)
+        _angAccel = Input.GetAxisRaw("Horizontal");
+
+        // _turnVelocity += ((_speedFactor * 2f) * _angAccel * Time.deltaTime);
+        // _turnVelocity = Mathf.Clamp(_turnVelocity, -_maxSpeed, _maxSpeed);
+
+        // if (_angAccel <= 0.05f)
+        // {
+        //     if (_turnVelocity >= 0.05f)
+        //     {
+        //         _turnVelocity -= _speedFactor * 0.5f * Time.deltaTime;
+        //     }
+        //     else if (_turnVelocity <= -0.05f)
+        //     {
+        //         _turnVelocity += _speedFactor * 0.5f * Time.deltaTime;
+        //     }
+
+        if (_angAccel < 0)
         {
-            // _angAccel = Input.GetAxisRaw("Horizontal") * _accelFactor;
 
-            // _turnVelocity += ((_speedFactor * 2f) * _angAccel * Time.deltaTime);
-            // _turnVelocity = Mathf.Clamp(_turnVelocity, -_maxSpeed, _maxSpeed);
-
-            // if (_angAccel <= 0.05f)
-            // {
-            //     if (_turnVelocity >= 0.05f)
-            //     {
-            //         _turnVelocity -= _speedFactor * 0.5f * Time.deltaTime;
-            //     }
-            //     else if (_turnVelocity <= -0.05f)
-            //     {
-            //         _turnVelocity += _speedFactor * 0.5f * Time.deltaTime;
-            //     }
-            // }
-
-            // _carModel.transform.localEulerAngles = Quaternion.Slerp(
-            //     Quaternion.Euler(_carModel.transform.localEulerAngles),
-            //     Quaternion.Euler(new Vector3(0.0f, Mathf.Atan2(
-            //         _turnVelocity, _moveVector.z) * 180 / Mathf.PI, 0.0f)),
-            //     _speedFactor * Time.deltaTime).eulerAngles;
-
-            // _moveVector.x = _turnVelocity;
-
-            // _rb.velocity = _moveVector;
-
-            _angAccel = Input.GetAxisRaw("Horizontal");
-
-            if (_angAccel < 0)
-            {
-                _carModel.transform.localEulerAngles = Quaternion.Slerp(
-                    Quaternion.Euler(_carModel.transform.localEulerAngles),
-                    Quaternion.Euler(new Vector3(0.0f, -45f, 0.0f)),
-                    _turnFactor * 0.5f * Time.deltaTime).eulerAngles;
-            }
-            else if (_angAccel > 0)
-            {
-                _carModel.transform.localEulerAngles = Quaternion.Slerp(
-                    Quaternion.Euler(_carModel.transform.localEulerAngles),
-                    Quaternion.Euler(new Vector3(0.0f, 45f, 0.0f)),
-                    _turnFactor * 0.5f * Time.deltaTime).eulerAngles;
-            }
-
-            transform.Translate(new Vector3(
-                _angAccel, 0.0f, 0.0f) * _turnFactor * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                Quaternion.Euler(new Vector3(0.0f, -45f, 0.0f)),
+                _turnFactor * Time.deltaTime);
+        }
+        else if (_angAccel > 0)
+        {
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                Quaternion.Euler(new Vector3(0.0f, 45f, 0.0f)),
+                _turnFactor * Time.deltaTime);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f)),
+                _turnFactor * Time.deltaTime);
         }
     }
 }
