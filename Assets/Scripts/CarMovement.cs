@@ -38,7 +38,7 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Accelerate()
     {
- 
+        //TODO Calculate acceleration 
     }
 
     /// <summary>
@@ -46,6 +46,6 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Decelerate()
     {
-
+        //TODO Calculate deceleration
     }
 }
