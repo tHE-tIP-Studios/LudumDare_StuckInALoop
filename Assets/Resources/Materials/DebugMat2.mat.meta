@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Resources/Textures.meta
+guid: 7eedc9d1e953a144da9b7173e6e3d18c
+folderAsset: yes
+DefaultImporter:
+=======
 guid: 74419b3aa2445224c8a3ad70f830db3a
 NativeFormatImporter:
+>>>>>>> 3ae7c654f837135145013c7b9f92fc93fb441c0e:Assets/Resources/Materials/DebugMat2.mat.meta
   externalObjects: {}
   mainObjectFileID: 0
   userData: 

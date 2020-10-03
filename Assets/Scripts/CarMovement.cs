@@ -52,7 +52,8 @@ public class CarMovement : MonoBehaviour
             _velocity -= _speedFactor * 0.65f * Time.deltaTime;
         }
 
-        _moveVector = new Vector3(0.0f, _rb.velocity.y * 1.03f, _velocity * transform.forward.z);
+        _moveVector = new Vector3(0.0f, _rb.velocity.y * 1.03f, _velocity);
+        _moveVector += (Vector3.forward * - StripMovement.StripSpeed);
         _rb.velocity = _moveVector;
     }
 
