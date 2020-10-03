@@ -15,6 +15,18 @@ public class CarMovement : MonoBehaviour
     private float _turnVelocity;
     private float _lastInput;
 
+    public bool IsGrounded
+    {
+        get
+        {
+            Collider[] cols = Physics.OverlapSphere(
+                new Vector3(transform.position.x,
+                transform.position.y - 0.5f, transform.position.z),
+                0.2f, LayerMask.GetMask("Track"));
+            return cols != null;
+        }
+    }
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -36,11 +48,23 @@ public class CarMovement : MonoBehaviour
         {
             _onMovementStart?.Invoke();
         }
+        if (IsGrounded)
+        {
+            VroomVroom();
+            Skrrrrt();
 
-        VroomVroom();
-        Skrrrrt();
+            _lastInput = Input.GetAxisRaw("Accelerator");
+        }
+        else
+        {
+            _moveVector = transform.forward * _velocity;
+            _moveVector.y = _rb.velocity.y * 1.03f;
+            _moveVector += (Vector3.forward * -StripMovement.StripSpeed);
+            _rb.velocity = _moveVector;
+        }
 
-        _lastInput = Input.GetAxisRaw("Accelerator");
+
+
     }
 
 
