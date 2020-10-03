@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class CarMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject _carModel;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _accelFactor;
     [SerializeField] private float _speedFactor;
@@ -12,6 +12,8 @@ public class CarMovement : MonoBehaviour
     private float _acceleration;
     private float _angAccel;
     private float _velocity;
+    private float _turnVelocity;
+    private float _lastInput;
 
     public bool IsGrounded
     {
@@ -54,6 +56,12 @@ public class CarMovement : MonoBehaviour
             _moveVector += (Vector3.forward * -StripMovement.StripSpeed);
             _rb.velocity = _moveVector;
         }
+        if (Input.GetAxisRaw("Accelerator") > 0.01f && _lastInput <= 0.01f)
+        {
+            _onMovementStart?.Invoke();
+        }
+
+        _lastInput = Input.GetAxisRaw("Accelerator");
     }
 
 
@@ -108,4 +116,6 @@ public class CarMovement : MonoBehaviour
                 _turnFactor * Time.deltaTime);
         }
     }
+
+    public UnityEvent _onMovementStart;
 }
