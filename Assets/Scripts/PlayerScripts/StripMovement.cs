@@ -39,7 +39,12 @@ public class StripMovement : MonoBehaviour
 
     private void Update()
     {
-        //if (!MatchManager.Started) return;
+        if (!MatchManager.Started)
+        {
+            StripSpeed = 0.0f;
+            return;
+        }
+        
         _trackOffset.y += Time.deltaTime * StripSpeed;
         _stripMat.SetTextureOffset("_MainTex", -_trackOffset * .2f);
 

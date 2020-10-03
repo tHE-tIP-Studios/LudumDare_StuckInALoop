@@ -14,16 +14,22 @@ public class MatchManager : MonoBehaviour
     private void Awake() 
     {
         _countDownWait = new WaitForSeconds(1);
-        Started = false;    
+        Started = false;
+    }
+
+    private void Start() 
+    {
+        StartCoroutine(MatchCountdown(_matchStartTime));   
     }
 
     private IEnumerator MatchCountdown(int time)
     {
-        for (int i = time; i > 0; i++)
+        for (int i = time; i > 0; i--)
         {
             onMatchStartTimer?.Invoke(i);
             yield return _countDownWait;
         }
+
         onMatchStart?.Invoke();
         Started = true;
     }
