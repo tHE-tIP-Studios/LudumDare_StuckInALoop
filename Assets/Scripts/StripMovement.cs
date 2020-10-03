@@ -40,7 +40,7 @@ public class StripMovement : MonoBehaviour
     private void Update()
     {
         _trackOffset.y += Time.deltaTime * StripSpeed;
-        _stripMat.SetTextureOffset("_MainTex", -_trackOffset);
+        _stripMat.SetTextureOffset("_MainTex", -_trackOffset * .2f);
 
         CalculateStripSpeed();
     }
@@ -51,14 +51,10 @@ public class StripMovement : MonoBehaviour
         Transform front = GetFarthestFront();
         Transform back = GetFarthestBack();
 
-        print($"Front cart: {front.name}");
-        print($"Back cart: {back.name}");
-
         // quanto mais perto o ultimo lugar esta da parte de tras mais lento a cassete roda,
         // quanto mais perto o primeiro lugar esta da parte da frente mais rapido.
 
         float t = Vector3.Distance(front.position, back.position) / _stripLength;
-        print(t);
         StripSpeed = Mathf.Lerp(_minSpeed, _maxSpeed, 1 - t);
     }
 
