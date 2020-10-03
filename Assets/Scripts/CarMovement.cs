@@ -12,7 +12,6 @@ public class CarMovement : MonoBehaviour
     private float _acceleration;
     private float _angAccel;
     private float _velocity;
-    private float _turnVelocity;
 
     private void Awake()
     {
@@ -33,7 +32,6 @@ public class CarMovement : MonoBehaviour
     {
         VroomVroom();
         Skrrrrt();
-        print($"RBVelocity: {_rb.velocity}");
     }
 
 
@@ -52,7 +50,6 @@ public class CarMovement : MonoBehaviour
             _velocity -= _speedFactor * 0.65f * Time.deltaTime;
         }
 
-        // _moveVector = new Vector3(0.0f, _rb.velocity.y * 1.03f, _velocity);
         _moveVector = transform.forward * _velocity;
         _moveVector.y = _rb.velocity.y * 1.03f;
         _moveVector += (Vector3.forward * -StripMovement.StripSpeed);
@@ -65,20 +62,6 @@ public class CarMovement : MonoBehaviour
     private void Skrrrrt()
     {
         _angAccel = Input.GetAxisRaw("Horizontal");
-
-        // _turnVelocity += ((_speedFactor * 2f) * _angAccel * Time.deltaTime);
-        // _turnVelocity = Mathf.Clamp(_turnVelocity, -_maxSpeed, _maxSpeed);
-
-        // if (_angAccel <= 0.05f)
-        // {
-        //     if (_turnVelocity >= 0.05f)
-        //     {
-        //         _turnVelocity -= _speedFactor * 0.5f * Time.deltaTime;
-        //     }
-        //     else if (_turnVelocity <= -0.05f)
-        //     {
-        //         _turnVelocity += _speedFactor * 0.5f * Time.deltaTime;
-        //     }
 
         if (_angAccel < 0)
         {
