@@ -44,10 +44,16 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
+        if (Input.GetAxisRaw("Accelerator") > 0.01f && _lastInput <= 0.01f)
+        {
+            _onMovementStart?.Invoke();
+        }
         if (IsGrounded)
         {
             VroomVroom();
             Skrrrrt();
+
+            _lastInput = Input.GetAxisRaw("Accelerator");
         }
         else
         {
@@ -56,12 +62,9 @@ public class CarMovement : MonoBehaviour
             _moveVector += (Vector3.forward * -StripMovement.StripSpeed);
             _rb.velocity = _moveVector;
         }
-        if (Input.GetAxisRaw("Accelerator") > 0.01f && _lastInput <= 0.01f)
-        {
-            _onMovementStart?.Invoke();
-        }
 
-        _lastInput = Input.GetAxisRaw("Accelerator");
+
+
     }
 
 
