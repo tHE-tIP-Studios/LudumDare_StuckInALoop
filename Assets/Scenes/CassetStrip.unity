@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 77652977}
   - component: {fileID: 77652976}
   - component: {fileID: 77652975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 144532470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 342176642}
   - component: {fileID: 342176643}
   - component: {fileID: 342176644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CassetteStrip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1320926872}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StripBackEnd
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -553,7 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1461376285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StripFrontEnd
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
