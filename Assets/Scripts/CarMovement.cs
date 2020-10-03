@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class CarMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject _carModel;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _accelFactor;
     [SerializeField] private float _speedFactor;
@@ -13,6 +13,7 @@ public class CarMovement : MonoBehaviour
     private float _angAccel;
     private float _velocity;
     private float _turnVelocity;
+    private float _lastInput;
 
     private void Awake()
     {
@@ -31,9 +32,15 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
+        if (Input.GetAxisRaw("Accelerator") > 0.01f && _lastInput <= 0.01f)
+        {
+            _onMovementStart?.Invoke();
+        }
+
         VroomVroom();
         Skrrrrt();
-        print($"RBVelocity: {_rb.velocity}");
+
+        _lastInput = Input.GetAxisRaw("Accelerator");
     }
 
 
@@ -103,4 +110,6 @@ public class CarMovement : MonoBehaviour
                 _turnFactor * Time.deltaTime);
         }
     }
+
+    public UnityEvent _onMovementStart;
 }

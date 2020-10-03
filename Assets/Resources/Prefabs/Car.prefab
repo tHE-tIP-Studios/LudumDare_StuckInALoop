@@ -81,6 +81,7 @@ MonoBehaviour:
   _maxSpeed: 35
   _accelFactor: 2
   _speedFactor: 15
+  _turnFactor: 0
 --- !u!114 &7696171757733116525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +195,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 820472992941554764}
     m_Modifications:
+    - target: {fileID: 2511597988576897361, guid: ff6483bc45ff61d4082034567fdc0496,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4337709383327714833, guid: ff6483bc45ff61d4082034567fdc0496,
         type: 3}
       propertyPath: m_LocalPosition.x
