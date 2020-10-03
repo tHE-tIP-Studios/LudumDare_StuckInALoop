@@ -12,7 +12,6 @@ public class CarMovement : MonoBehaviour
     private float _acceleration;
     private float _angAccel;
     private float _velocity;
-    private float _turnVelocity;
     private float _lastInput;
 
     public bool IsGrounded
@@ -62,9 +61,6 @@ public class CarMovement : MonoBehaviour
             _moveVector += (Vector3.forward * -StripMovement.StripSpeed);
             _rb.velocity = _moveVector;
         }
-
-
-
     }
 
 
