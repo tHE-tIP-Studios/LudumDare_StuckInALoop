@@ -12,6 +12,8 @@ public class StripMovement : MonoBehaviour
     private PlayerCar[] _carts;
     private Transform _backEnd, _frontEnd;
     private float _stripLength;
+    private float t;
+
     private void Awake()
     {
         StripSpeed = Mathf.Lerp(_minSpeed, _maxSpeed, 0.5f);
@@ -53,7 +55,15 @@ public class StripMovement : MonoBehaviour
         // quanto mais perto o ultimo lugar esta da parte de tras mais lento a cassete roda,
         // quanto mais perto o primeiro lugar esta da parte da frente mais rapido.
 
-        float t = Vector3.Distance(front.position, back.position) / _stripLength;
+        if (!front && !back)
+        {
+            t = Mathf.Lerp(t, 1f, Time.deltaTime);
+        }
+        else
+        {
+            t = Vector3.Distance(front.position, back.position) / _stripLength;
+        }
+
         StripSpeed = Mathf.Lerp(_minSpeed, _maxSpeed, 1 - t);
     }
 
@@ -74,6 +84,7 @@ public class StripMovement : MonoBehaviour
             }
         }
 
+        if (cart == -1) return null;
         return _carts[cart].transform;
     }
 
@@ -94,6 +105,7 @@ public class StripMovement : MonoBehaviour
             }
         }
 
+        if (cart == -1) return null;
         return _carts[cart].transform;
     }
 }
