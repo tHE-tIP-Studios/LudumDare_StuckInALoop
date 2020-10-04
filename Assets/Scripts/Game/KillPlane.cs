@@ -28,7 +28,8 @@ public class KillPlane : MonoBehaviour
 
                 if (d < 0)
                 {
-                    _killables[i].Kill();
+                    if (!_killables[i].Dead)
+                        _killables[i].Kill();
                 }
             }
         }

@@ -6,20 +6,40 @@ using System;
 
 public class MatchManager : MonoBehaviour
 {
+    public static bool Started;
     [SerializeField] private int _matchStartTime;
     private WaitForSeconds _countDownWait;
+    private List<PlayerCar> _looserOrder;
+    private PlayerCar[] _cars;
+    private PlayerComparer _sorter;
 
-    public static bool Started;
+    public List<PlayerCar> SortedCarsLoosersToWinners 
+    {
+        get
+        {
+            _looserOrder.Sort(_sorter);
+            return _looserOrder;
+        }
+    }
 
     private void Awake() 
     {
         _countDownWait = new WaitForSeconds(1);
         Started = false;
+        _cars = FindObjectsOfType<PlayerCar>();
+
+        _sorter = new PlayerComparer();
+        _looserOrder = new List<PlayerCar>();
     }
 
-    private void Start() 
+    private void Start()
     {
-        StartCoroutine(MatchCountdown(_matchStartTime));   
+        foreach(PlayerCar car in _cars)
+        {
+            car.onKill.AddListener(() => _looserOrder.Add(car));
+        }
+
+        StartCoroutine(MatchCountdown(_matchStartTime));
     }
 
     private IEnumerator MatchCountdown(int time)

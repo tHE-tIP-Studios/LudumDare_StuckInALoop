@@ -36,6 +36,7 @@ public class CountdownTimerUI : MonoBehaviour
         _uiElement.text = i.ToString();
         StartCoroutine(Circle());
     }
+    
     private IEnumerator Circle()
     {
         float t = 0f;

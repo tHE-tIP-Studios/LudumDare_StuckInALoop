@@ -5,5 +5,6 @@ using UnityEngine;
 public interface IPlaneKillable
 {
     Vector3 Position {get;}
+    bool Dead{get;}
     void Kill();
 }

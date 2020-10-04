@@ -14,6 +14,9 @@ public class CarMovement : MonoBehaviour
     private float _velocity;
     private float _lastInput;
 
+    // VFX
+    private CarEffects _carEffects;
+
     public bool IsGrounded
     {
         get
@@ -29,6 +32,7 @@ public class CarMovement : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _carEffects = GetComponent<CarEffects>();
         NoiseManager.AddAudioSource(this.gameObject);
     }
 
@@ -43,16 +47,29 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
-        if (Input.GetAxisRaw("Accelerator") > 0.01f && _lastInput <= 0.01f)
+        float input = Input.GetAxisRaw("Accelerator");
+        if ( input > 0.01f && _lastInput <= 0.01f)
         {
             _onMovementStart?.Invoke();
         }
+
+        if (input > 0.1f && _carEffects.MoveParticles.isStopped)
+        {
+            _carEffects.MoveParticles.Play();
+        }
+        else if (input < 0.1f && !_carEffects.MoveParticles.isStopped)
+        {
+            _carEffects.MoveParticles.Stop();
+        }
+        
+        if (!MatchManager.Started) return;
+
         if (IsGrounded)
         {
             VroomVroom();
             Skrrrrt();
 
-            _lastInput = Input.GetAxisRaw("Accelerator");
+            _lastInput = input;
         }
         else
         {
@@ -77,6 +94,7 @@ public class CarMovement : MonoBehaviour
         if (_acceleration <= 0.05f && _velocity >= 0.05f)
         {
             _velocity -= _speedFactor * 0.65f * Time.deltaTime;
+            
         }
 
         _moveVector = transform.forward * _velocity;
