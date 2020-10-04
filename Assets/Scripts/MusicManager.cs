@@ -53,7 +53,7 @@ public class MusicManager : MonoBehaviour
         IEnumerator Transition()
         {
             _explosionSnapshot.TransitionTo(0.2f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.3f);
             _normalSnapshot.TransitionTo(0.2f);
         }
     }
