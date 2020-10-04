@@ -111,6 +111,7 @@ public class MatchManager : MonoBehaviour
         // Wait 1 second before the match actually starts
         yield return _countDownWait;
 
+        NoiseManager.PlaySound(this.gameObject, "321GO");
         for (int i = time; i > 0; i--)
         {
             onMatchStartTimer?.Invoke(i);
