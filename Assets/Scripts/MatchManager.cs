@@ -9,12 +9,18 @@ public class MatchManager : MonoBehaviour
     public static bool Started;
     [SerializeField] private int _matchStartTime;
     [SerializeField] private Transform _startPositions;
+    [SerializeField] private AudioClip _matchTrack;
+
+    // Match control variables
     private WaitForSeconds _countDownWait;
     private List<PlayerCar> _looserOrder;
     private PlayerCar[] _cars;
     private PlayerComparer _sorter;
     private Transform[] _startPoints;
     private System.Random _rnd;
+
+    // Audio stuff
+    private MusicManager _music;
 
     public List<PlayerCar> SortedCarsLoosersToWinners 
     {
@@ -28,6 +34,7 @@ public class MatchManager : MonoBehaviour
     private void Awake() 
     {
         _cars = FindObjectsOfType<PlayerCar>();
+        _music = FindObjectOfType<MusicManager>();
         _startPoints = new Transform[_startPositions.childCount];
 
         for (int i = 0; i < _startPositions.childCount; i++)
@@ -37,12 +44,16 @@ public class MatchManager : MonoBehaviour
         
         foreach(PlayerCar car in _cars)
         {
-            car.onKill.AddListener(() => _looserOrder.Add(car));
+            car.onKill.AddListener(() => AddCarToKilled(car));
         }
 
         _countDownWait = new WaitForSeconds(1);
         _sorter = new PlayerComparer();
         _looserOrder = new List<PlayerCar>(_cars.Length);
+        
+        // add music stuff
+        _music.CurrentMusic = _matchTrack;
+        onMatchStart.AddListener(() => _music.Play(1f));
     }
 
     private void Start()
@@ -50,9 +61,19 @@ public class MatchManager : MonoBehaviour
         InitMatch();
     }
 
-    private void AddCarToKilled()
+    private void AddCarToKilled(PlayerCar car)
     {
+        _looserOrder.Add(car);
 
+        if (_looserOrder.Count >= _cars.Length - 1)
+        {
+            onMatchEnd?.Invoke();
+        }
+    }
+
+    private void Update() 
+    {
+        
     }
 
     private void InitMatch()

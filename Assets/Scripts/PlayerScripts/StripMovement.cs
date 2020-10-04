@@ -9,7 +9,7 @@ public class StripMovement : MonoBehaviour
     [SerializeField] private float _minSpeed;
     private Material _stripMat;
     private Vector2 _trackOffset;
-    private Transform[] _carts;
+    private PlayerCar[] _carts;
     private Transform _backEnd, _frontEnd;
     private float _stripLength;
     private void Awake()
@@ -26,15 +26,8 @@ public class StripMovement : MonoBehaviour
 
     private void Start() 
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Cart");
-        _carts = new Transform[objs.Length];
-
-        if (_carts.Length <= 0) Debug.LogError("No object in scene contains the Cart tag");
-
-        for (int i = 0; i < _carts.Length; i++)
-        {
-            _carts[i] = objs[i].transform;
-        }
+        _carts = FindObjectsOfType<PlayerCar>();
+        if (_carts.Length <= 0) Debug.LogError("No object in scene is of type PlayerCar");
     }
 
     private void Update()
@@ -71,7 +64,8 @@ public class StripMovement : MonoBehaviour
 
         for (int i = 0; i < _carts.Length; i++)
         {
-            float z = _carts[i].position.z;
+            if (!_carts[i].Alive) continue;
+            float z = _carts[i].transform.position.z;
 
             if (z > farthest)
             {
@@ -80,7 +74,7 @@ public class StripMovement : MonoBehaviour
             }
         }
 
-        return _carts[cart];
+        return _carts[cart].transform;
     }
 
     private Transform GetFarthestBack()
@@ -90,7 +84,8 @@ public class StripMovement : MonoBehaviour
 
         for (int i = 0; i < _carts.Length; i++)
         {
-            float z = _carts[i].position.z;
+            if (!_carts[i].Alive) continue;
+            float z = _carts[i].transform.position.z;
 
             if (z < farthest)
             {
@@ -99,6 +94,6 @@ public class StripMovement : MonoBehaviour
             }
         }
 
-        return _carts[cart];
+        return _carts[cart].transform;
     }
 }
