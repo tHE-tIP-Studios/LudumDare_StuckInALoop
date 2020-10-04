@@ -39,7 +39,7 @@ public class MatchManager : MonoBehaviour
 
         for (int i = 0; i < _startPositions.childCount; i++)
         {
-            _startPoints[i] = _startPositions.GetChild(i); 
+            _startPoints[i] = _startPositions.GetChild(i);
         }
         
         foreach(PlayerCar car in _cars)

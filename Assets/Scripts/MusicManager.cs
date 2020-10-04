@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
-    private AudioClip _currentMusic;
+    [SerializeField] private AudioMixerGroup _musicGroup;
     private AudioSource _player;
     private bool _wasPlaying;
 
     public bool Playing => _player.isPlaying;
     public AudioClip CurrentMusic {get; set;}
 
-    private void Awake() 
+    private void Awake()
     {
         _player = gameObject.AddComponent<AudioSource>();
+        _player.outputAudioMixerGroup = _musicGroup;
 
     }
 
     public void Play(float volume)
     {
         _player.volume = volume;
-        _player.clip = _currentMusic;
+        _player.clip = CurrentMusic;
         _player.Play();
     }
 
@@ -29,7 +31,7 @@ public class MusicManager : MonoBehaviour
     {
         _player.loop = loop;
         _player.volume = 1f;
-        _player.clip = _currentMusic;
+        _player.clip = CurrentMusic;
         _player.Play();
     }
 
