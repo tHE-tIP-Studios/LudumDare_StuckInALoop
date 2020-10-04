@@ -14568,6 +14568,7 @@ MonoBehaviour:
   _accelFactor: 2
   _speedFactor: 6
   _turnFactor: 2
+  _playerNum: 0
   _onMovementStart:
     m_PersistentCalls:
       m_Calls:
@@ -29147,8 +29148,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -6504716993079654656, guid: f0bead22308ceca409e3a0e2d7c5e3b7,
-        type: 3}
+      objectReference: {fileID: 2100000, guid: 8a75a3d4ba3ec5d4d994fe1f10a1f096, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0bead22308ceca409e3a0e2d7c5e3b7, type: 3}
 --- !u!4 &6249246173521758882 stripped
