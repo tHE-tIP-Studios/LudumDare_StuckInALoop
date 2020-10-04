@@ -1,0 +1,437 @@
+fileFormatVersion: 2
+guid: ce118d051a5c0a6409fcf31c365d162f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1196875840510086902
+    second: Cassette Spritesheet_0
+  - first:
+      213: 6788712063387734732
+    second: Cassette Spritesheet_1
+  - first:
+      213: -5294527205266904582
+    second: Cassette Spritesheet_2
+  - first:
+      213: -6613048412984305578
+    second: Cassette Spritesheet_3
+  - first:
+      213: 7202193467158589900
+    second: Cassette Spritesheet_4
+  - first:
+      213: -4472199508411200253
+    second: Cassette Spritesheet_5
+  - first:
+      213: 3884898639191627147
+    second: Cassette Spritesheet_6
+  - first:
+      213: -4432748138242268913
+    second: Cassette Spritesheet_7
+  - first:
+      213: 6835770863526769048
+    second: Cassette Spritesheet_8
+  - first:
+      213: 4153491372654969645
+    second: Cassette Spritesheet_9
+  - first:
+      213: -4322934821801008999
+    second: Cassette Spritesheet_10
+  - first:
+      213: 1594886746820793254
+    second: Cassette Spritesheet_11
+  - first:
+      213: -235173390031412098
+    second: Cassette Spritesheet_12
+  - first:
+      213: -3153764093456997995
+    second: Cassette Spritesheet_13
+  - first:
+      213: -1306482547319823509
+    second: Cassette Spritesheet_14
+  - first:
+      213: -1862676452585973405
+    second: Cassette Spritesheet_15
+  - first:
+      213: -6611203373569489344
+    second: Cassette Spritesheet_16
+  - first:
+      213: -9177981386887799120
+    second: Cassette Spritesheet_17
+  - first:
+      213: 7413480022508982930
+    second: Cassette Spritesheet_18
+  - first:
+      213: -7618051610768647331
+    second: Cassette Spritesheet_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 65
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cassette Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 2448
+        width: 159
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01362ea3c7d36fe0800000000000000
+      internalID: -1196875840510086902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 3155
+        y: 2321
+        width: 94
+        height: 473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d4978ed3e8fe1c0800000000000000
+      internalID: -4472199508411200253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 3567
+        y: 2317
+        width: 172
+        height: 513
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b855a61babee9e530800000000000000
+      internalID: 3884898639191627147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 3253
+        y: 2319
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23cfb4b56a24a930800000000000000
+      internalID: 4153491372654969645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 3263
+        y: 2318
+        width: 27
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9906267fea9d104c0800000000000000
+      internalID: -4322934821801008999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 3296
+        y: 2319
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a35b31db0d222610800000000000000
+      internalID: 1594886746820793254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 1930
+        width: 2632
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e74ad8a3c0f7cbcf0800000000000000
+      internalID: -235173390031412098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 4215
+        y: 1706
+        width: 577
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5912d1034449b34d0800000000000000
+      internalID: -3153764093456997995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 4919
+        y: 1704
+        width: 1172
+        height: 483
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6321c59b017edde0800000000000000
+      internalID: -1306482547319823509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 527
+        width: 428
+        height: 1316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369d020a2a17626e0800000000000000
+      internalID: -1862676452585973405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 554
+        width: 2565
+        height: 1309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 046c6843f894044a0800000000000000
+      internalID: -6611203373569489344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 4714
+        y: 303
+        width: 1524
+        height: 1257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bed76f3e8241a080800000000000000
+      internalID: -9177981386887799120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cassette Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 3583
+        y: 96
+        width: 264
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2925a1b5dc8f1e660800000000000000
+      internalID: 7413480022508982930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
