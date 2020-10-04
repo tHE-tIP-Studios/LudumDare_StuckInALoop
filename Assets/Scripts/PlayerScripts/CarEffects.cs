@@ -14,9 +14,11 @@ public class CarEffects : MonoBehaviour
     public UnityEvent onCarExplosion;
     public ParticleSystem MoveParticles => _moveParticles;
     private ShakeBehaviour _shaker;
+    private MusicManager _music;
 
     private void Awake() {
         _shaker = FindObjectOfType<ShakeBehaviour>();
+        _music = FindObjectOfType<MusicManager>();
     }
 
     public void StartMovementSmoke()
@@ -28,6 +30,7 @@ public class CarEffects : MonoBehaviour
     {
         _deathParticles.Play();
         StartCoroutine(CallAfterTime(.7f, onCarExplosion));
+        StartCoroutine(CallAfterTime(.7f, _music.Explosion));
     }
 
     private IEnumerator CallAfterTime(float t, UnityEvent functionToCall)

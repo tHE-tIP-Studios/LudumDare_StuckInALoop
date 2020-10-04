@@ -25,6 +25,7 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 6837259324707974996}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -118,6 +119,19 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &6837259324707974996
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Explosion
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 664b59547cef6584c83bb67cab2c07ad
+  m_FloatValues:
+    cafae9991259c5a4fb58baeea10df727: -0.08374829
+    7aded45adf14bb444a7b6c39432678e7: 500
+  m_TransitionOverrides: {}
 --- !u!243 &8066217902398111208
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -133,7 +147,24 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 3701615171382126062}
+  - {fileID: 8463878309194632445}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &8463878309194632445
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: c9e862363cd98834090444ad1bd73461
+  m_EffectName: Lowpass Simple
+  m_MixLevel: f39a663afaf1b5449b4a289749023f9a
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 7aded45adf14bb444a7b6c39432678e7
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0

@@ -14,8 +14,11 @@ public class StripMovement : MonoBehaviour
     private float _stripLength;
     private float t;
 
+    public bool Stop {get; set;}
+
     private void Awake()
     {
+        Stop = false;
         StripSpeed = Mathf.Lerp(_minSpeed, _maxSpeed, 0.5f);
         _stripMat = transform.Find("Mesh").GetComponentInChildren<MeshRenderer>().material;
 
@@ -55,7 +58,7 @@ public class StripMovement : MonoBehaviour
         // quanto mais perto o ultimo lugar esta da parte de tras mais lento a cassete roda,
         // quanto mais perto o primeiro lugar esta da parte da frente mais rapido.
 
-        if (!front && !back)
+        if (!front && !back || Stop)
         {
             t = Mathf.Lerp(t, 1f, Time.deltaTime);
         }

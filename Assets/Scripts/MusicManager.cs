@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 public class MusicManager : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup _musicGroup;
+    [SerializeField] private AudioMixerSnapshot _normalSnapshot;
+    [SerializeField] private AudioMixerSnapshot _explosionSnapshot;
     private AudioSource _player;
     private bool _wasPlaying;
 
@@ -44,6 +46,17 @@ public class MusicManager : MonoBehaviour
         _wasPlaying = Playing;
     }
     
+    public void Explosion()
+    {
+        StartCoroutine(Transition());
+
+        IEnumerator Transition()
+        {
+            _explosionSnapshot.TransitionTo(0.2f);
+            yield return new WaitForSeconds(0.2f);
+            _normalSnapshot.TransitionTo(0.2f);
+        }
+    }
 
     public UnityEvent onCurrentMusicEnd;
 }
