@@ -7,6 +7,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 51a43bf380c2aa544ab18b83ea7f89c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Train Front
+    second: {fileID: 2100000, guid: aadf4ec31792ae64282ec489fcaa7b75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrainBody
+    second: {fileID: 2100000, guid: c7957321b0a9a184a82f4465a9c5ce01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Wheels
     second: {fileID: 2100000, guid: 8a75a3d4ba3ec5d4d994fe1f10a1f096, type: 2}
   materials:

@@ -10,6 +10,7 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private float _turnFactor;
     [SerializeField] private int _playerNum = default;
     private Rigidbody _rb;
+    private PlayerCar _playerCar;
     private Vector3 _moveVector;
     private float _acceleration;
     private float _angAccel;
@@ -36,11 +37,19 @@ public class CarMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _carEffects = GetComponent<CarEffects>();
+        _playerCar = GetComponent<PlayerCar>();
         NoiseManager.AddAudioSource(this.gameObject);
         PlayerInputs = ReInput.players.GetPlayer(_playerNum);
 
+    }
+    private void Start()
+    {
         if (PlayerInputs.controllers.joystickCount == 0)
+        {
             Debug.Log("Player " + _playerNum + " doesn't have a connected controller.");
+            _playerCar.Kill();
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
