@@ -33,6 +33,8 @@ public class MatchManager : MonoBehaviour
 
     private void Awake() 
     {
+        NoiseManager.AddAudioSource(this.gameObject);
+
         _cars = FindObjectsOfType<PlayerCar>();
         _music = FindObjectOfType<MusicManager>();
         _startPoints = new Transform[_startPositions.childCount];
@@ -47,7 +49,7 @@ public class MatchManager : MonoBehaviour
             car.onKill.AddListener(() => AddCarToKilled(car));
         }
 
-        _countDownWait = new WaitForSeconds(1);
+        _countDownWait = new WaitForSeconds(1f);
         _sorter = new PlayerComparer();
         _looserOrder = new List<PlayerCar>(_cars.Length);
         
@@ -69,11 +71,6 @@ public class MatchManager : MonoBehaviour
         {
             onMatchEnd?.Invoke();
         }
-    }
-
-    private void Update() 
-    {
-        
     }
 
     private void InitMatch()
