@@ -113,7 +113,7 @@ MonoBehaviour:
   _startSmoke: {fileID: 9051964582516560083}
   _moveParticles: {fileID: 8292268513715633847}
   _deathParticles: {fileID: 3406206333919777601}
-  _shakeStrength: 0.2
+  _shakeStrength: 0.4
   onCarExplosion:
     m_PersistentCalls:
       m_Calls: []

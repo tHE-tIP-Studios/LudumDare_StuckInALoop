@@ -27,7 +27,7 @@ public class CarEffects : MonoBehaviour
     public void StartDeath()
     {
         _deathParticles.Play();
-        StartCoroutine(CallAfterTime(0.6f, onCarExplosion));
+        StartCoroutine(CallAfterTime(.7f, onCarExplosion));
     }
 
     private IEnumerator CallAfterTime(float t, UnityEvent functionToCall)

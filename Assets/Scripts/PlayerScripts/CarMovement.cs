@@ -53,12 +53,19 @@ public class CarMovement : MonoBehaviour
             _onMovementStart?.Invoke();
         }
 
-        if (input > 0.1f && _carEffects.MoveParticles.isStopped)
+        if (input > 0.1f && _carEffects.MoveParticles.isStopped && IsGrounded)
         {
             _carEffects.MoveParticles.Play();
         }
-        else if (input < 0.1f && !_carEffects.MoveParticles.isStopped)
+
+        if (input < 0.1f && !_carEffects.MoveParticles.isStopped)
         {
+            _carEffects.MoveParticles.Stop();
+        }
+
+        if (!IsGrounded && !_carEffects.MoveParticles.isStopped)
+        {
+            print("Stop particles");
             _carEffects.MoveParticles.Stop();
         }
         
