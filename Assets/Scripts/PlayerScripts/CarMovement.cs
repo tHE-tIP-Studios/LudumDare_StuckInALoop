@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Rewired;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class CarMovement : MonoBehaviour
@@ -7,12 +8,14 @@ public class CarMovement : MonoBehaviour
     [SerializeField] private float _accelFactor;
     [SerializeField] private float _speedFactor;
     [SerializeField] private float _turnFactor;
+    [SerializeField] private int _playerNum = default;
     private Rigidbody _rb;
     private Vector3 _moveVector;
     private float _acceleration;
     private float _angAccel;
     private float _velocity;
     private float _lastInput;
+    public Player PlayerInputs { get; private set; }
 
     // VFX
     private CarEffects _carEffects;
@@ -23,7 +26,7 @@ public class CarMovement : MonoBehaviour
         {
             Collider[] cols = Physics.OverlapSphere(
                 new Vector3(transform.position.x,
-                transform.position.y - 0.5f, transform.position.z),
+                    transform.position.y - 0.5f, transform.position.z),
                 0.2f, LayerMask.GetMask("Track"));
             return cols != null;
         }
@@ -34,6 +37,10 @@ public class CarMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _carEffects = GetComponent<CarEffects>();
         NoiseManager.AddAudioSource(this.gameObject);
+        PlayerInputs = ReInput.players.GetPlayer(_playerNum);
+
+        if (PlayerInputs.controllers.joystickCount == 0)
+            Debug.Log("Player " + _playerNum + " doesn't have a connected controller.");
     }
 
     // Update is called once per frame
@@ -47,8 +54,8 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
-        float input = Input.GetAxisRaw("Accelerator");
-        if ( input > 0.01f && _lastInput <= 0.01f)
+        float input = PlayerInputs.GetAxisRaw("Button0");
+        if (input > 0.01f && _lastInput <= 0.01f)
         {
             _onMovementStart?.Invoke();
         }
@@ -68,7 +75,7 @@ public class CarMovement : MonoBehaviour
             print("Stop particles");
             _carEffects.MoveParticles.Stop();
         }
-        
+
         if (!MatchManager.Started) return;
 
         if (IsGrounded)
@@ -87,13 +94,12 @@ public class CarMovement : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Car does "vroom vroom" when moving
     /// </summary>
     private void VroomVroom()
     {
-        _acceleration = Input.GetAxisRaw("Accelerator") * _accelFactor;
+        _acceleration = PlayerInputs.GetAxisRaw("Button0") * _accelFactor;
 
         _velocity += (_speedFactor * _acceleration * Time.deltaTime);
         _velocity = _velocity >= _maxSpeed ? _maxSpeed : _velocity;
@@ -101,7 +107,7 @@ public class CarMovement : MonoBehaviour
         if (_acceleration <= 0.05f && _velocity >= 0.05f)
         {
             _velocity -= _speedFactor * 0.65f * Time.deltaTime;
-            
+
         }
 
         _moveVector = transform.forward * _velocity;
@@ -115,7 +121,7 @@ public class CarMovement : MonoBehaviour
     /// </summary>
     private void Skrrrrt()
     {
-        _angAccel = Input.GetAxisRaw("Horizontal");
+        _angAccel = PlayerInputs.GetAxisRaw("HorizontalAxisL");
 
         if (_angAccel < 0)
         {
