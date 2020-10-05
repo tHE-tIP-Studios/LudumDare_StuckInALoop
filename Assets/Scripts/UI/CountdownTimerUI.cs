@@ -62,6 +62,7 @@ public class CountdownTimerUI : MonoBehaviour
 
     public void Disable()
     {
+        _uiElement.text = "3";
         _uiElement.gameObject.SetActive(false);
         _goObj.gameObject.SetActive(true);
         _goObj.LeanScale(Vector3.one, .1f).setOnComplete(DisableAfterTime);
