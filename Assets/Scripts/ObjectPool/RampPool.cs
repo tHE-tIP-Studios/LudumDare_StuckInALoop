@@ -15,23 +15,31 @@ public class RampPool : GenericObjectPool<RampFunction>
         _spawnCooldown = new WaitForSeconds(_cooldownTime);
     }
 
-    private void Start()
+    public void MatchBegins()
     {
         StartCoroutine(SpawnCoroutine());
+    }
+
+    public void MatchEnded()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+        StopAllCoroutines();
+        _firstSpawn = false;
     }
 
     private IEnumerator SpawnCoroutine()
     {
         if (!_firstSpawn)
         {
-            print("First spawn");
             yield return new WaitForSeconds(_timeBeforeFirstSpawn);
             _firstSpawn = true;
         }
-        print("Normal spawn");
+
         RampFunction wall = GetFromPool();
-        wall.transform.SetParent(_spawnPoints[Random.Range(0, _spawnPoints.Length)]);
-        wall.transform.localPosition = Vector3.zero;
+        wall.transform.position = _spawnPoints[Random.Range(0, _spawnPoints.Length)].position;
         wall.gameObject.SetActive(true);
         yield return _spawnCooldown;
         StartCoroutine(SpawnCoroutine());
