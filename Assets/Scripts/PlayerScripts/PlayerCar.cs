@@ -33,7 +33,7 @@ public class PlayerCar : MonoBehaviour, IPlaneKillable
     public void Kill()
     {
         onKill?.Invoke();
-        StartCoroutine(HelpRoutines.CallAfterTime(6f, ()=> gameObject.SetActive(false)));
+        StartCoroutine(HelpRoutines.CallAfterTime(1f, ()=> gameObject.SetActive(false)));
         Alive = false;
     }
 

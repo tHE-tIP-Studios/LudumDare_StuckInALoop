@@ -110,14 +110,14 @@ public class MatchManager : MonoBehaviour
     {
         _looserOrder.Clear();
         _deadCars = 0;
-        
+
+        InitMatch();
+
         foreach (PlayerCar car in _cars)
         {
             car.gameObject.SetActive(car.ActivePlayer);
             car.Alive = true;
         }
-
-        InitMatch();
     }
 
     public void CloseMatch()
