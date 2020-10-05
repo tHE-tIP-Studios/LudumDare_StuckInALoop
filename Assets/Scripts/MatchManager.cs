@@ -37,6 +37,7 @@ public class MatchManager : MonoBehaviour
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
 
         NoiseManager.AddAudioSource(this.gameObject);
 
@@ -101,6 +102,7 @@ public class MatchManager : MonoBehaviour
 
             _cars[i].transform.position = _startPoints[position - 1].position;
         }
+        onMatchInit?.Invoke();
         StartCoroutine(MatchCountdown(_matchStartTime));
     }
 

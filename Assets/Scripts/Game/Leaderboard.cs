@@ -4,24 +4,41 @@ using UnityEngine;
 
 public class Leaderboard : MonoBehaviour
 {
+    [SerializeField] private Transform _menu;
     [SerializeField] private Transform _barHolder;
+    [SerializeField] private ComeIn _leaderboardAnim;
+    [SerializeField] private ComeIn _backgroundAnim;
     private LeaderboardBar[] _bars;
     private MatchManager _match;
+    private MusicManager _music;
 
     private void Awake() 
     {
         _match = FindObjectOfType<MatchManager>();
         _bars =_barHolder.GetComponentsInChildren<LeaderboardBar>();
+        _music = FindObjectOfType<MusicManager>();
     }
 
     public void OpenMenu()
     {
-        SetLeaderboard();
+        _music.Leaderboard();
+        
+        StartCoroutine(HelpRoutines.CallAfterTime(1f, () => 
+            {
+                _menu.gameObject.SetActive(true);
+                SetLeaderboard();
+            }));
     }
 
     public void CloseMenu()
     {
-        this.gameObject.SetActive(false);
+        _music.InGame();
+        _leaderboardAnim.Close();
+        _backgroundAnim.Close();
+        StartCoroutine(HelpRoutines.CallAfterTime(1f, () => 
+        {
+            _menu.gameObject.SetActive(false);
+        }));
     }
 
     private void SetLeaderboard()
@@ -37,5 +54,9 @@ public class Leaderboard : MonoBehaviour
                 _bars[_bars.Length - (i + 1)].gameObject.SetActive(false);
             }
         }
+        // Open Background
+        _leaderboardAnim.Open();
+        // Open tabs
+        _backgroundAnim.Open();
     }
 }

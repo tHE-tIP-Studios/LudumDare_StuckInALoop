@@ -8,6 +8,7 @@ public class LeaderboardBar : MonoBehaviour
 {
     [SerializeField] private Image _icon = default;
     [SerializeField] private GameObject _deadOverlay = default;
+    [SerializeField] private float _barWidth = 1000;
     private Image _bar;
     private TextMeshProUGUI _barText;
 

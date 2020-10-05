@@ -65,7 +65,7 @@ public class MusicManager : MonoBehaviour
 
     public void Leaderboard()
     {
-        _explosionSnapshot.TransitionTo(1f);
+        _explosionSnapshot.TransitionTo(.1f);
     }
 
     public void InGame()

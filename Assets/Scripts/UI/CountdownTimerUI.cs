@@ -26,6 +26,8 @@ public class CountdownTimerUI : MonoBehaviour
 
     private void OnEnable() {
         _matchManager.onMatchStartTimer += SetTime;
+        _uiElement.gameObject.SetActive(true);
+        _goObj.gameObject.SetActive(false);
     }
 
     private void OnDisable() {
