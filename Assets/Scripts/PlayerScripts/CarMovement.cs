@@ -40,7 +40,6 @@ public class CarMovement : MonoBehaviour
         _playerCar = GetComponent<PlayerCar>();
         NoiseManager.AddAudioSource(this.gameObject);
         PlayerInputs = ReInput.players.GetPlayer(_playerNum);
-
     }
     private void Start()
     {

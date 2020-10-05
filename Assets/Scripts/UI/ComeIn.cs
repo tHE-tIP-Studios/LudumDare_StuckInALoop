@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ComeIn : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class ComeIn : MonoBehaviour
         move.x = 0;
         move.z = 0;
         move.y = 0;
+        onOpen?.Invoke();
         LeanTween.cancel(gameObject);
         LeanTween.move(t, move, _timeToMove).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => _open = true);
     }
@@ -31,8 +33,12 @@ public class ComeIn : MonoBehaviour
         move.x = -_moveValue;
         move.z = 0;
         move.y = 0;
-
+        
+        onClose?.Invoke();
         LeanTween.cancel(gameObject);
         LeanTween.move(t, move, _timeToMove).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => _open = false);
     }
+
+    public UnityEvent onOpen;
+    public UnityEvent onClose;
 }
