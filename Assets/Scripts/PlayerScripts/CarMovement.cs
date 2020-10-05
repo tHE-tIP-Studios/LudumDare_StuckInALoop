@@ -47,6 +47,7 @@ public class CarMovement : MonoBehaviour
         if (PlayerInputs.controllers.joystickCount == 0)
         {
             Debug.Log("Player " + _playerNum + " doesn't have a connected controller.");
+            _playerCar.ActivePlayer = false;
             _playerCar.Kill();
             gameObject.SetActive(false);
         }

@@ -209,6 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04cb9ae868755c4c8c5bd2fd537fea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icon: {fileID: -3852731618399566284, guid: f3fd169bd0afb6940a46b9dd6ceaa24c, type: 3}
+  _mainColor: {r: 0.9622642, g: 0.5947696, b: 0.2598113, a: 1}
   onKill:
     m_PersistentCalls:
       m_Calls:
