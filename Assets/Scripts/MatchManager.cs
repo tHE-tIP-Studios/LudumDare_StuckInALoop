@@ -158,6 +158,12 @@ public class MatchManager : MonoBehaviour
         onMatchStart?.Invoke();
     }
 
+    public void ForceMatchEnd()
+    {
+        onMatchEnd?.Invoke();
+        Started = false;
+    }
+
     public UnityEvent onMatchInit;
     public UnityEvent onMatchStart;
     public UnityEvent onMatchEnd;
