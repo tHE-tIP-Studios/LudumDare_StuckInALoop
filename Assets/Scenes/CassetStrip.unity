@@ -820,6 +820,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &235485038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7927132946384169626, guid: f2da8d972fa334e45a722283477f736c,
+    type: 3}
+  m_PrefabInstance: {fileID: 74287772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &254057618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15694,6 +15700,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 625709179}
+        m_MethodName: SetSelectedGameObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 235485038}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

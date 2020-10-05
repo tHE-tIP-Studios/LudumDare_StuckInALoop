@@ -9,6 +9,7 @@ public class UITextColorChange : MonoBehaviour
     [SerializeField] private float _frameTime;
     private TextMeshProUGUI _text;
     private WaitForSeconds _wait;
+    private bool wasDisabled;
     private void Awake()
     {
         _text = GetComponent<TextMeshProUGUI>();
@@ -20,8 +21,21 @@ public class UITextColorChange : MonoBehaviour
 
     private void Start()
     {
-        //if (_colors.Length <= 0) return;
-        StartCoroutine(AnimateColor());
+            StartCoroutine(AnimateColor());
+    }
+
+    private void OnDisable()
+    {
+        wasDisabled = true;
+    }
+
+    private void Update() 
+    {
+        if (gameObject.activeInHierarchy && wasDisabled)
+        {
+            StartCoroutine(AnimateColor());
+            wasDisabled = false;
+        }
     }
 
     private IEnumerator AnimateColor()

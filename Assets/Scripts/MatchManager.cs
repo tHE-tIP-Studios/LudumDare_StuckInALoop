@@ -83,13 +83,13 @@ public class MatchManager : MonoBehaviour
     {
         if (_deadCars >= _cars.Length - 1 && Started)
         {
+            Started = false;
             onMatchEnd?.Invoke();
         }
     }
 
     private void InitMatch()
     {
-        Started = false;
         Cursor.visible = false;
 
         List<int> availablePositions = new List<int>() { 1, 2, 3, 4 };
@@ -117,14 +117,18 @@ public class MatchManager : MonoBehaviour
         {
             car.gameObject.SetActive(car.ActivePlayer);
             car.Alive = true;
+
+            if (!car.ActivePlayer)
+            {
+                _deadCars++;
+                car.Alive = false;
+            } 
         }
     }
 
     public void CloseMatch()
     {
-        
         Cursor.visible = true;
-
         foreach (PlayerCar c in _cars)
         {
             if (!_looserOrder.Contains(c))
@@ -132,8 +136,6 @@ public class MatchManager : MonoBehaviour
                 _looserOrder.Add(c);
             }
         }
-
-        Started = false;
     }
 
     private IEnumerator MatchCountdown(int time)
@@ -152,8 +154,8 @@ public class MatchManager : MonoBehaviour
         countdown.Disable();
         yield return _countDownWait;
 
-        onMatchStart?.Invoke();
         Started = true;
+        onMatchStart?.Invoke();
     }
 
     public UnityEvent onMatchInit;
