@@ -9,6 +9,7 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioMixerGroup _musicGroup;
     [SerializeField] private AudioMixerSnapshot _normalSnapshot;
     [SerializeField] private AudioMixerSnapshot _explosionSnapshot;
+    [SerializeField] private AudioMixerSnapshot _leaderSnapshot;
     private AudioSource _player;
     private bool _wasPlaying;
 
@@ -65,7 +66,7 @@ public class MusicManager : MonoBehaviour
 
     public void Leaderboard()
     {
-        _explosionSnapshot.TransitionTo(.1f);
+        _leaderSnapshot.TransitionTo(.1f);
     }
 
     public void InGame()

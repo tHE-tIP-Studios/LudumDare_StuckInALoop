@@ -21,23 +21,22 @@ public class Leaderboard : MonoBehaviour
 
     public void OpenMenu()
     {
-        _music.Leaderboard();
-        
-        StartCoroutine(HelpRoutines.CallAfterTime(1f, () => 
+        StartCoroutine(HelpRoutines.CallAfterTime(2f, () => 
             {
                 _menu.gameObject.SetActive(true);
                 SetLeaderboard();
+                _music.Leaderboard();
             }));
     }
 
     public void CloseMenu()
     {
-        _music.InGame();
         _leaderboardAnim.Close();
         _backgroundAnim.Close();
         StartCoroutine(HelpRoutines.CallAfterTime(1f, () => 
         {
             _menu.gameObject.SetActive(false);
+            _music.InGame();
         }));
     }
 

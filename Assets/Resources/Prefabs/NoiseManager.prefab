@@ -64,6 +64,8 @@ MonoBehaviour:
   _normalSnapshot: {fileID: 24500006, guid: 6d0f8e990047f1a45a6fcf68351545f9, type: 2}
   _explosionSnapshot: {fileID: 6837259324707974996, guid: 6d0f8e990047f1a45a6fcf68351545f9,
     type: 2}
+  _leaderSnapshot: {fileID: 505666860128351937, guid: 6d0f8e990047f1a45a6fcf68351545f9,
+    type: 2}
   onCurrentMusicEnd:
     m_PersistentCalls:
       m_Calls:

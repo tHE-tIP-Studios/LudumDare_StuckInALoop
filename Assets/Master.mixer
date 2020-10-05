@@ -26,6 +26,7 @@ AudioMixerController:
   m_Snapshots:
   - {fileID: 24500006}
   - {fileID: 6837259324707974996}
+  - {fileID: 505666860128351937}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -42,7 +43,7 @@ AudioMixerController:
     - 0962696cc790c84438e628e40c0e8d4c
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 505666860128351937}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -91,6 +92,19 @@ AudioMixerSnapshotController:
     f48b5b47785aa364aa9c32d3381255e4: -0.30163807
     cafae9991259c5a4fb58baeea10df727: -0.08374829
   m_TransitionOverrides: {}
+--- !u!245 &505666860128351937
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Leaderboard
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: ac9339be6bfe9b447ba4b8b70bbc4f50
+  m_FloatValues:
+    cafae9991259c5a4fb58baeea10df727: -10.139999
+    7aded45adf14bb444a7b6c39432678e7: 500
+  m_TransitionOverrides: {}
 --- !u!244 &3701615171382126062
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -134,7 +148,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 664b59547cef6584c83bb67cab2c07ad
   m_FloatValues:
-    cafae9991259c5a4fb58baeea10df727: -30
+    cafae9991259c5a4fb58baeea10df727: -19.659313
     7aded45adf14bb444a7b6c39432678e7: 500
   m_TransitionOverrides: {}
 --- !u!243 &8066217902398111208
