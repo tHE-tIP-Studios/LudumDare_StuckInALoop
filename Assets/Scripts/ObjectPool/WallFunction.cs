@@ -6,6 +6,8 @@ public class WallFunction : MonoBehaviour
     private float _timer;
     private WallPool _poll;
 
+    public WallPool Poll => _poll;
+
     private void Awake()
     {
         _timer = _timeToLive;

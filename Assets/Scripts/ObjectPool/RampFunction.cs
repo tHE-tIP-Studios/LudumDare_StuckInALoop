@@ -6,6 +6,8 @@ public class RampFunction : MonoBehaviour
     private float _timer;
     private RampPool _pool;
 
+    public RampPool Pool => _pool;
+
     private void Awake() 
     {
         _timer = _timeToLive;

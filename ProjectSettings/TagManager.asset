@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cart
   - CassetteStrip
+  - Obstacle
   layers:
   - Default
   - TransparentFX

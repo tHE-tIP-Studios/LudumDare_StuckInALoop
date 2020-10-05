@@ -68,22 +68,32 @@ public class CarMovement : MonoBehaviour
         if (input > 0.01f && _lastInput <= 0.01f)
         {
             _onMovementStart?.Invoke();
+            if (input > 0.01f && !MatchManager.Started)
+            {
+                NoiseManager.PlaySound(this.gameObject, "car_accelerate3", true, false, true);
+            }
         }
 
         if (input > 0.1f && _carEffects.MoveParticles.isStopped && IsGrounded)
         {
             _carEffects.MoveParticles.Play();
+            if (MatchManager.Started)
+            {
+                NoiseManager.PlaySound(this.gameObject, "car_motor1", true, true);
+            }
         }
 
         if (input < 0.1f && !_carEffects.MoveParticles.isStopped)
         {
             _carEffects.MoveParticles.Stop();
+            NoiseManager.StopSound(this.gameObject);
         }
 
         if (!IsGrounded && !_carEffects.MoveParticles.isStopped)
         {
             print("Stop particles");
             _carEffects.MoveParticles.Stop();
+            NoiseManager.StopSound(this.gameObject);
         }
 
         if (!MatchManager.Started) return;
