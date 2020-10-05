@@ -27,7 +27,10 @@ public class ComeIn : MonoBehaviour
     {
         if (!_open) return;
 
-        Vector3 move = new Vector3(0.0f, -_moveValue, 0.0f);
+        Vector3 move = t.position;
+        move.x = -_moveValue;
+        move.z = 0;
+        move.y = 0;
 
         LeanTween.cancel(gameObject);
         LeanTween.move(t, move, _timeToMove).setEase(LeanTweenType.easeInOutExpo).setOnComplete(() => _open = false);

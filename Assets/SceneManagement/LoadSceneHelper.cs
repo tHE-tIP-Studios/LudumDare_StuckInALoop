@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadSceneHelper : MonoBehaviour
 {
@@ -6,6 +7,6 @@ public class LoadSceneHelper : MonoBehaviour
 
     public void Load()
     {
-        SceneLoader.Load(_sceneName);
+        SceneManager.LoadScene(_sceneName);
     }
 }
