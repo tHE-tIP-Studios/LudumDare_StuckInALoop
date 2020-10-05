@@ -19,6 +19,7 @@ public class CarEffects : MonoBehaviour
     private void Awake() {
         _shaker = FindObjectOfType<ShakeBehaviour>();
         _music = FindObjectOfType<MusicManager>();
+        NoiseManager.AddAudioSource(this.gameObject);
     }
 
     public void StartMovementSmoke()
@@ -29,8 +30,13 @@ public class CarEffects : MonoBehaviour
     public void StartDeath()
     {
         _deathParticles.Play();
+        NoiseManager.PlaySound(this.gameObject, "car_fall" + Random.Range(1, 4));
         StartCoroutine(CallAfterTime(.7f, onCarExplosion));
-        StartCoroutine(CallAfterTime(.7f, _music.Explosion));
+        StartCoroutine(CallAfterTime(.7f, () => 
+        {
+            _music.Explosion(); 
+            NoiseManager.PlaySound(this.gameObject, "car_explosion" + Random.Range(1, 3));
+        }));
     }
 
     private IEnumerator CallAfterTime(float t, UnityEvent functionToCall)

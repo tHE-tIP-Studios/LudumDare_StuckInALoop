@@ -77,7 +77,7 @@ public class StripMovement : MonoBehaviour
 
         for (int i = 0; i < _carts.Length; i++)
         {
-            if (!_carts[i].Alive) continue;
+            if (!_carts[i].Alive || !_carts[i].gameObject.activeInHierarchy) continue;
             float z = _carts[i].transform.position.z;
 
             if (z > farthest)
@@ -98,7 +98,7 @@ public class StripMovement : MonoBehaviour
 
         for (int i = 0; i < _carts.Length; i++)
         {
-            if (!_carts[i].Alive) continue;
+            if (!_carts[i].Alive || !_carts[i].gameObject.activeInHierarchy) continue;
             float z = _carts[i].transform.position.z;
 
             if (z < farthest)

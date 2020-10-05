@@ -10,6 +10,7 @@ public class CountdownTimerUI : MonoBehaviour
     private TextMeshProUGUI _uiElement;
     private Image _countdownCircle;
     private Transform _goObj;
+    private Coroutine _fillRoutine;
 
     private float _currentCircleValue;
 
@@ -34,13 +35,17 @@ public class CountdownTimerUI : MonoBehaviour
     private void SetTime(int i)
     {
         _uiElement.text = i.ToString();
-        StartCoroutine(Circle());
+        
+        if (_fillRoutine == null)
+        {
+            _fillRoutine = StartCoroutine(Circle());
+        }
     }
     
     private IEnumerator Circle()
     {
         float t = 0f;
-        float endValue = _currentCircleValue <= 0.02f ? 1 : 0;
+        float endValue = _currentCircleValue <= 0.1f ? 1 : 0;
 
         while(t < 1f)
         {
@@ -52,6 +57,7 @@ public class CountdownTimerUI : MonoBehaviour
 
         _currentCircleValue = _countdownCircle.fillAmount;
         _countdownCircle.fillClockwise = !_countdownCircle.fillClockwise;
+        _fillRoutine = null;
     }
 
     public void Disable()
