@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 public class NoiseManager : MonoBehaviour
 {
     //* Class variables
-    private NoiseManager _instance = default;
+    private static NoiseManager _instance;
     [SerializeField] private SoundDB _soundDB = default;
     [SerializeField] private AudioMixerGroup _sfxMixer = default;
     private static Dictionary<string, AudioClip> _audioDictionary = default;
