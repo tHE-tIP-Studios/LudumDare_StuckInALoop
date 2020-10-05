@@ -36,6 +36,8 @@ public class MatchManager : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+
         NoiseManager.AddAudioSource(this.gameObject);
 
         _cars = FindObjectsOfType<PlayerCar>();
@@ -87,6 +89,7 @@ public class MatchManager : MonoBehaviour
     private void InitMatch()
     {
         Started = false;
+        Cursor.visible = false;
 
         List<int> availablePositions = new List<int>() { 1, 2, 3, 4 };
 
@@ -117,6 +120,9 @@ public class MatchManager : MonoBehaviour
 
     public void CloseMatch()
     {
+        
+        Cursor.visible = true;
+
         foreach (PlayerCar c in _cars)
         {
             if (!_looserOrder.Contains(c))
