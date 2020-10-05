@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CassetStrip.unity
     guid: 003c9cd3d868df44197d50ca73dfeb53
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadScene.unity
     guid: a6b7a226046b3b148bf75993db84130b
   m_configObjects: {}
