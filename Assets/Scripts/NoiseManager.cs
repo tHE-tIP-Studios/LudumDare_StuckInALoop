@@ -9,12 +9,12 @@ public class NoiseManager : MonoBehaviour
 {
     //* Class variables
     private static NoiseManager _instance;
+    private static AudioMixerGroup _mixerGroup;
     [SerializeField] private SoundDB _soundDB = default;
     [SerializeField] private AudioMixerGroup _sfxMixer = default;
     private static Dictionary<string, AudioClip> _audioDictionary = default;
 
     public NoiseManager Instance => _instance;
-    private static AudioMixerGroup MixerGroup;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -28,7 +28,7 @@ public class NoiseManager : MonoBehaviour
 
         DontDestroyOnLoad(_instance);
         CreateSoundCollection();
-        MixerGroup = _sfxMixer;
+        _mixerGroup = _sfxMixer;
     }
 
     /// <summary>
@@ -88,7 +88,7 @@ public class NoiseManager : MonoBehaviour
             audioSource.playOnAwake = playOnAwake;
             audioSource.minDistance = minDistance;
             audioSource.maxDistance = maxDistance;
-            audioSource.outputAudioMixerGroup = MixerGroup;
+            audioSource.outputAudioMixerGroup = _mixerGroup;
         }
     }
 
