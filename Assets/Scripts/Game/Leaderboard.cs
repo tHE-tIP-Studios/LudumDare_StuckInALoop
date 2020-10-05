@@ -21,7 +21,7 @@ public class Leaderboard : MonoBehaviour
 
     public void CloseMenu()
     {
-        
+        this.gameObject.SetActive(false);
     }
 
     private void SetLeaderboard()

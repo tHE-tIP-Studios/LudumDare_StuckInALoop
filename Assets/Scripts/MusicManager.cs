@@ -37,6 +37,11 @@ public class MusicManager : MonoBehaviour
         _player.Play();
     }
 
+    public void Stop()
+    {
+        _player.Stop();
+    }
+
     private void Update() 
     {
         if (!Playing && _wasPlaying)
