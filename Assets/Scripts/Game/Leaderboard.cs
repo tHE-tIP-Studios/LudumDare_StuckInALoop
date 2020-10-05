@@ -30,6 +30,7 @@ public class Leaderboard : MonoBehaviour
         for (int i = 0; i < order.Count ; i++)
         {
             _bars[_bars.Length - (i + 1)].SetBar(order[i], _bars.Length - i);
+            print($"Is {order[i].name} active: {order[i].ActivePlayer}");
 
             if (!order[i].ActivePlayer)
             {

@@ -25,7 +25,7 @@ public class MatchManager : MonoBehaviour
     // Audio stuff
     private MusicManager _music;
 
-    public List<PlayerCar> SortedCarsLoosersToWinners 
+    public List<PlayerCar> SortedCarsLoosersToWinners
     {
         get
         {
@@ -34,7 +34,7 @@ public class MatchManager : MonoBehaviour
         }
     }
 
-    private void Awake() 
+    private void Awake()
     {
         NoiseManager.AddAudioSource(this.gameObject);
 
@@ -46,8 +46,8 @@ public class MatchManager : MonoBehaviour
         {
             _startPoints[i] = _startPositions.GetChild(i);
         }
-        
-        foreach(PlayerCar car in _cars)
+
+        foreach (PlayerCar car in _cars)
         {
             car.onKill.AddListener(() => AddCarToKilled(car));
         }
@@ -55,7 +55,7 @@ public class MatchManager : MonoBehaviour
         _countDownWait = new WaitForSeconds(1f);
         _sorter = new PlayerComparer();
         _looserOrder = new List<PlayerCar>(_cars.Length);
-        
+
         // add music stuff
         _music.CurrentMusic = _matchTrack;
         onMatchStart.AddListener(() => _music.Play(1f));
@@ -76,7 +76,7 @@ public class MatchManager : MonoBehaviour
         _deadCars++;
     }
 
-    private void Update() 
+    private void Update()
     {
         if (_deadCars >= _cars.Length - 1 && Started)
         {
@@ -88,14 +88,13 @@ public class MatchManager : MonoBehaviour
     {
         Started = false;
 
-        List<int> availablePositions = new List<int>(){1, 2, 3, 4};
+        List<int> availablePositions = new List<int>() { 1, 2, 3, 4 };
 
         // Set cars in respective position
         for (int i = 0; i < _cars.Length; i++)
         {
-            int position = availablePositions[ UnityEngine.Random.Range(0, availablePositions.Count)];
+            int position = availablePositions[UnityEngine.Random.Range(0, availablePositions.Count)];
             availablePositions.Remove(position);
-            Debug.Log(position);
 
             _cars[i].transform.position = _startPoints[position - 1].position;
         }
@@ -105,9 +104,12 @@ public class MatchManager : MonoBehaviour
     public void ResetMatch()
     {
         _looserOrder.Clear();
-        foreach(PlayerCar car in _cars)
+        _deadCars = 0;
+        
+        foreach (PlayerCar car in _cars)
         {
             car.gameObject.SetActive(car.ActivePlayer);
+            car.Alive = true;
         }
 
         InitMatch();
@@ -115,7 +117,7 @@ public class MatchManager : MonoBehaviour
 
     public void CloseMatch()
     {
-        foreach(PlayerCar c in _cars)
+        foreach (PlayerCar c in _cars)
         {
             if (!_looserOrder.Contains(c))
             {

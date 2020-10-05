@@ -14,8 +14,6 @@ public class KillPlane : MonoBehaviour
 
         var group = FindObjectsOfType<MonoBehaviour>().OfType<IPlaneKillable>();
         _killables.AddRange(group);
-
-        Debug.Log(_killables.Count);  
     }
 
     private void FixedUpdate() 
