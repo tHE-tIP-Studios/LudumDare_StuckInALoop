@@ -18,6 +18,9 @@ public class MatchManager : MonoBehaviour
     private PlayerComparer _sorter;
     private Transform[] _startPoints;
     private System.Random _rnd;
+    private int _deadCars;
+
+    public int DeadCars => _deadCars;
 
     // Audio stuff
     private MusicManager _music;
@@ -65,9 +68,17 @@ public class MatchManager : MonoBehaviour
 
     private void AddCarToKilled(PlayerCar car)
     {
-        _looserOrder.Add(car);
+        if (car.ActivePlayer)
+        {
+            _looserOrder.Add(car);
+        }
 
-        if (_looserOrder.Count >= _cars.Length - 1)
+        _deadCars++;
+    }
+
+    private void Update() 
+    {
+        if (_deadCars >= _cars.Length - 1 && Started)
         {
             onMatchEnd?.Invoke();
         }
@@ -88,7 +99,6 @@ public class MatchManager : MonoBehaviour
 
             _cars[i].transform.position = _startPoints[position - 1].position;
         }
-        
         StartCoroutine(MatchCountdown(_matchStartTime));
     }
 
@@ -103,8 +113,22 @@ public class MatchManager : MonoBehaviour
         InitMatch();
     }
 
+    public void CloseMatch()
+    {
+        foreach(PlayerCar c in _cars)
+        {
+            if (!_looserOrder.Contains(c))
+            {
+                _looserOrder.Add(c);
+            }
+        }
+
+        Started = false;
+    }
+
     private IEnumerator MatchCountdown(int time)
     {
+        CountdownTimerUI countdown = FindObjectOfType<CountdownTimerUI>();
         // Wait 1 second before the match actually starts
         yield return _countDownWait;
 
@@ -115,10 +139,14 @@ public class MatchManager : MonoBehaviour
             yield return _countDownWait;
         }
 
+        countdown.Disable();
+        yield return _countDownWait;
+
         onMatchStart?.Invoke();
         Started = true;
     }
 
+    public UnityEvent onMatchInit;
     public UnityEvent onMatchStart;
     public UnityEvent onMatchEnd;
     public event Action<int> onMatchStartTimer;

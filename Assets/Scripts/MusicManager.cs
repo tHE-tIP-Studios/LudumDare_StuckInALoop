@@ -58,5 +58,15 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void Leaderboard()
+    {
+        _explosionSnapshot.TransitionTo(1f);
+    }
+
+    public void InGame()
+    {
+        _normalSnapshot.TransitionTo(0.1f);
+    }
+
     public UnityEvent onCurrentMusicEnd;
 }

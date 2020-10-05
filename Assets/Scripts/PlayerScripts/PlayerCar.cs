@@ -5,9 +5,18 @@ using UnityEngine.Events;
 
 public class PlayerCar : MonoBehaviour, IPlaneKillable
 {
+    [SerializeField] private Sprite _icon;
+    [SerializeField] private Color _mainColor;
     public Vector3 Position => transform.position;
     public bool Alive {get; private set;}
+    public bool ActivePlayer {get; set;}
     public bool Dead => !Alive;
+    public Sprite Icon => _icon;
+    public Color MainColor => _mainColor;
+
+    private void Awake() {
+        ActivePlayer = true;
+    }
 
     // Start is called before the first frame update
     void Start()

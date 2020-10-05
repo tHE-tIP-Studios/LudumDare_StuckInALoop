@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04cb9ae868755c4c8c5bd2fd537fea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _icon: {fileID: -3419558705259990920, guid: f3fd169bd0afb6940a46b9dd6ceaa24c, type: 3}
+  _mainColor: {r: 0.71662515, g: 0.8301887, b: 0.80458766, a: 1}
   onKill:
     m_PersistentCalls:
       m_Calls:

@@ -62,8 +62,8 @@ public class CountdownTimerUI : MonoBehaviour
 
     public void Disable()
     {
-        _goObj.gameObject.SetActive(true);
         _uiElement.gameObject.SetActive(false);
+        _goObj.gameObject.SetActive(true);
         _goObj.LeanScale(Vector3.one, .1f).setOnComplete(DisableAfterTime);
     }
 
@@ -75,6 +75,9 @@ public class CountdownTimerUI : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        StartCoroutine(afterTime(.5f));
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(afterTime(.5f));
+        }
     }
 }
