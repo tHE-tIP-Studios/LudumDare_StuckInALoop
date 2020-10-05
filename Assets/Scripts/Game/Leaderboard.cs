@@ -19,6 +19,11 @@ public class Leaderboard : MonoBehaviour
         SetLeaderboard();
     }
 
+    public void CloseMenu()
+    {
+        
+    }
+
     private void SetLeaderboard()
     {
         List<PlayerCar> order =  _match.SortedCarsLoosersToWinners;
