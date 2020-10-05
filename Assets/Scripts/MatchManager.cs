@@ -107,7 +107,7 @@ public class MatchManager : MonoBehaviour
         _looserOrder.Clear();
         foreach(PlayerCar car in _cars)
         {
-            car.gameObject.SetActive(true);
+            car.gameObject.SetActive(car.ActivePlayer);
         }
 
         InitMatch();
